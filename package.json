@@ -1,6 +1,6 @@
 {
   "name": "react-verbal-reduer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Ryan J. Pridgen",
   "description": "An extension of React's 'useReducer' hook to automatically type and map reducer actions.",
   "keywords": [
