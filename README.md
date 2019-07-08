@@ -8,13 +8,13 @@ ___
 ## Install
 
 ```
-npm i --save verbal-react-reducer
+npm i --save react-verbal-reducer
 ```
 
 ## Simple Example
 
 ```ts
-import { verbalReducer } from 'react-verbal-reduer'
+import { verbalReducer } from 'react-verbal-reducer'
 
 interface State {
   isLoading: boolean
