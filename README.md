@@ -19,9 +19,9 @@ const initialState = {count: 0}
 
 const reducer = verbalReducer(initialState)(
   {
-    set(count) {
-      return { count }
-    },
+    set: (count = 0) => ({
+      count
+    }),
     increment: {},
     decrement: {},
   },
@@ -46,6 +46,7 @@ function Counter() {
       <button onClick={() => actions.set(50)}>+50</button>
       <button onClick={actions.increment}>+</button>
       <button onClick={actions.decrement}>-</button>
+      <button onClick={actions.set}>Reset</button>
     </>
   )
 }
@@ -63,9 +64,9 @@ Unlike regular reducers, the update object returned verbal reducers gets *merged
 ```ts
 const reducer = verbalReducer({ username: '', count: 0 })(
   {
-    setUsername(username) {
-      return { username }
-    }
+    setUsername: (username: string) => ({
+      username
+    })
   },
   (state, action) => {
     switch (action.type) {
