@@ -2,7 +2,7 @@
 
 This package provides an extention to the React `useEffect` hook. A verbal reducer automatically applies types to reducer actions, and provides a mapped version of each action creator directly to the component.
 
-Using verbal reducers relieves developers of the need to create overly verbose and (often times) ambiguous reducer boiler plate. Written in Typescript, verbal reducers will automatically interperate the action types and corresponding actions being provided within reducers, and exposed within components.
+Using verbal reducers relieves developers of the need to create overly verbose and (often times) ambiguous reducer boiler plate. Written in Typescript, verbal reducers will automatically interpret the action types and corresponding actions being provided within reducers, and exposed within components.
 
 ___
 ## Install
@@ -26,6 +26,7 @@ const reducer = verbalReducer<State>()(
     setIsLoading: (isLoading: boolean) => ({
       isLoading,
     }),
+    
     setUsers: (users: User[]) => ({
       users,
     }),
