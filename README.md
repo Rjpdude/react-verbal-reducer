@@ -1,8 +1,8 @@
 # React Verbal Reducer
 
-This package provides an extention to the React `useEffect` hook. A verbal reducer automatically applies types to reducer actions, and provides a mapped version of each action creator directly to the component.
+Verbal reducers are extensions of the React `useEffect` hook. A verbal reducer automatically applies types to actions, and provides a mapped version of each action creator directly to the component.
 
-Using verbal reducers relieves developers of the need to create overly verbose and (often times) ambiguous reducer boiler plate. Written in Typescript, verbal reducers will automatically interpret the action types and corresponding actions being provided within reducers, and exposed within components.
+This serves as an alternative to `dispatch`, and is especially useful within `context` providers.
 
 ___
 ## Install
@@ -17,43 +17,42 @@ npm i --save react-verbal-reducer
 import { verbalReducer } from 'react-verbal-reducer'
 
 interface State {
-  isLoading: boolean
-  users: User[]
+  count: number
 }
 
 const reducer = verbalReducer<State>()(
   {
-    setIsLoading: (isLoading: boolean) => ({
-      isLoading,
-    }),
-    
-    setUsers: (users: User[]) => ({
-      users,
-    }),
+    set(count: number) {
+      return { count }
+    },
+    increment: {},
+    decrement: {},
   },
 
   (state, action) => {
     switch (action.type) {
-      case 'setIsLoading':
-        return { isLoading: action.isLoading }
-      case 'setUsers':
-        return { isLoading: false, users: action.users }
+      case 'set':
+        return { count: action.count }
+      case 'increment':
+        return { count: state.count + 1 }
+      case 'decrement':
+        return { count: state.count - 1 }
     }
   },
 )
 
-const Component = () => {
-  const [state, { setIsLoading, setUsers }] = reducer.use({
-    isLoading: false,
-    users: [],
+function Counter() {
+  const [state, actions] = reducer.use({
+    count: 0,
   })
 
-  const loadUsers = () => {
-    setIsLoading(true)
-
-    Promise.resolve(apiCall()).then((users) => {
-      setUsers(users)
-    })
-  }
-})
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => actions.set(50)}>+50</button>
+      <button onClick={actions.increment}>+</button>
+      <button onClick={actions.decrement}>-</button>
+    </>
+  )
+}
 ```
