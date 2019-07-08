@@ -1,6 +1,6 @@
 # React Verbal Reducer
 
-Verbal reducers are extensions of the [React useEffect](https://reactjs.org/docs/hooks-reference.html#usereducer) hook. A verbal reducer automatically applies types to actions, and provides a mapped version of each action creator directly to the component.
+Verbal reducers are extensions of the [React useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) hook. A verbal reducer automatically applies types to actions, and provides a mapped version of each action creator directly to the component.
 
 This serves as an alternative to `dispatch`, and is especially useful within `context` providers.
 
