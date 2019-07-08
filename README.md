@@ -43,7 +43,7 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => actions.set(50)}>+50</button>
+      <button onClick={() => actions.set(state.count + 50)}>+50</button>
       <button onClick={actions.increment}>+</button>
       <button onClick={actions.decrement}>-</button>
       <button onClick={actions.set}>Reset</button>
